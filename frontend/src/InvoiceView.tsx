@@ -282,9 +282,7 @@ function InvoiceView() {
           format: "a5",
           orientation: "portrait",
         },
-        pagebreak: {
-          mode: ["avoid-all"],
-        },
+      
       })
       .from(billRef.current)
       .save();
