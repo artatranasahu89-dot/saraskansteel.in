@@ -1,0 +1,451 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String    @id @default(uuid())
+  name           String
+  email          String    @unique
+  password       String
+  role           UserRole  @default(CUSTOMER)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  carts          Cart[]
+  orders         Order[]
+  faceImage      String?
+  adminFaces AdminFace[]
+  lastActivityAt DateTime?
+}
+
+model Category {
+  id             String    @id @default(uuid())
+  name           String    @unique
+  description    String?
+  createdAt      DateTime  @default(now())
+  categoryNumber Int?      @unique
+  isActive       Boolean   @default(true)
+  products       Product[]
+}
+
+model Product {
+  id             String          @id @default(uuid())
+  name           String
+  sku            String          @unique
+  description    String?
+  price          Float
+  stock          Int
+  categoryId     String
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  isActive       Boolean         @default(true)
+  labourRate     Float           @default(0)
+  unit           String          @default("PCS")
+  imageUrl       String?
+  cartItems      CartItem[]
+  orderItems     OrderItem[]
+  category       Category        @relation(fields: [categoryId], references: [id])
+  purchaseItems  PurchaseItem[]
+  stockMovements StockMovement[]
+}
+
+model Purchase {
+  id             String         @id @default(uuid())
+  purchaseNumber String         @unique
+  supplierId     String
+  totalAmount    Float          @default(0)
+  note           String?
+  createdAt      DateTime       @default(now())
+  supplier       Supplier       @relation(fields: [supplierId], references: [id])
+  items          PurchaseItem[]
+}
+
+model PurchaseItem {
+  id         String   @id @default(uuid())
+  purchaseId String
+  productId  String
+  quantity   Float
+  rate       Float
+  amount     Float
+  createdAt  DateTime @default(now())
+  product    Product  @relation(fields: [productId], references: [id])
+  purchase   Purchase @relation(fields: [purchaseId], references: [id])
+}
+
+model Order {
+  id                      String           @id @default(uuid())
+  orderNumber             String           @unique
+  customerId              String?
+  createdAt               DateTime         @default(now())
+  updatedAt               DateTime         @updatedAt
+  customerRecordId        String?
+  labourAmount            Float            @default(0)
+  assignedStaffId         String?
+  transportCharge         Float            @default(0)
+  transportId             String?
+  transport               Staff?           @relation("TransportOrder", fields: [transportId], references: [id])
+  status                  String           @default("PENDING")
+  amountPaidToday         Float            @default(0)
+  deliveredAt             DateTime?
+  invoiceValue            Float            @default(0)
+  nowOutstanding          Float            @default(0)
+  totalPayable            Float            @default(0)
+  totalPaid               Float            @default(0)
+  paymentDate             DateTime?
+  paymentMethod           String?
+  paymentStatus           String           @default("PENDING")
+  previousOutstanding     Float            @default(0)
+  userId                  String?
+  labourType              String           @default("NONE")
+  deliveryAddressId       String?
+  deliveryAddress         CustomerAddress? @relation("OrderDeliveryAddress", fields: [deliveryAddressId], references: [id])
+  deliveryAddressSnapshot String?
+  deliveryFailedAt        DateTime?
+  deliveryLocation        String?
+  deliveryNote            String?
+  deliveryStatus          String           @default("PENDING")
+  outForDeliveryAt        DateTime?
+  collectionRemark        String?
+  collectionStatus        String           @default("PENDING")
+  expectedPaymentDate     DateTime?
+  invoice                 Invoice?
+  assignedStaff           Staff?           @relation(fields: [assignedStaffId], references: [id])
+  customerRecord          Customer?        @relation(fields: [customerRecordId], references: [id])
+
+  User     User?       @relation(fields: [userId], references: [id])
+  items    OrderItem[]
+  payments Payment[]
+
+  deliveryLat       Float?
+  deliveryLng       Float?
+  deliveryUpdatedAt DateTime?
+  deliveryProofImage String?
+  deliveryRemark    String?
+
+}
+
+model OrderItem {
+  id        String  @id @default(uuid())
+  orderId   String
+  productId String
+  quantity  Int
+  unitPrice Float
+  order     Order   @relation(fields: [orderId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+model Coupon {
+  id        String   @id @default(uuid())
+  code      String   @unique
+  discount  Float
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model Invoice {
+  id              String        @id @default(uuid())
+  invoiceNumber   String        @unique
+  orderId         String        @unique
+  createdAt       DateTime      @default(now())
+  actualWeight    Float?
+  finalAmount     Float         @default(0)
+  labourCharge    Float         @default(0)
+  notes           String?
+  transportCharge Float         @default(0)
+  customerAddress String?
+  customerId      String?
+  customerMobile  String?
+  customerName    String?
+  discountAmount  Float         @default(0)
+  gstNumber       String?
+  materialAmount  Float         @default(0)
+  updatedAt       DateTime      @default(now()) @updatedAt
+  order           Order         @relation(fields: [orderId], references: [id])
+  items           InvoiceItem[]
+}
+
+model InvoiceItem {
+  id          String  @id @default(uuid())
+  invoiceId   String
+  productId   String?
+  productName String
+  quantity    Float
+  unit        String?
+  rate        Float
+  amount      Float
+  invoice     Invoice @relation(fields: [invoiceId], references: [id])
+}
+
+model Cart {
+  id        String     @id @default(uuid())
+  userId    String
+  createdAt DateTime   @default(now())
+  user      User       @relation(fields: [userId], references: [id])
+  items     CartItem[]
+}
+
+model CartItem {
+  id        String  @id @default(uuid())
+  cartId    String
+  productId String
+  quantity  Int     @default(1)
+  cart      Cart    @relation(fields: [cartId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+model Customer {
+  id                String            @id @default(uuid())
+  name              String
+  email             String?
+  address           String?
+  gstNumber         String?
+  profileImage      String?
+  createdAt         DateTime          @default(now())
+  createdById       String?
+  customerNumber    String?           @unique
+  mobile            String?           @unique
+  password          String?
+  outstandingAmount Float             @default(0)
+  orders            Order[]
+  payments          Payment[]
+  CustomerAddress   CustomerAddress[]
+  points      Int          @default(0)
+  redemptions Redemption[]
+  dateOfBirth DateTime?
+  
+  pointLedgers RewardPointLedger[]
+}
+
+model Staff {
+  id              String   @id @default(uuid())
+  staffCode       String   @unique
+  name            String
+  mobile          String   @unique
+  password        String?
+  role            String   @default("STAFF")
+  active          Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  type            String   @default("STAFF")
+  assignedOrders  Order[]
+  transportOrders Order[]  @relation("TransportOrder")
+}
+
+model Payment {
+  id              String    @id @default(uuid())
+  orderId         String?
+  customerId      String?
+  amount          Float
+  paymentMode     String
+  source          String
+  collectedById   String?
+  collectedByName String?
+  note            String?
+  createdAt       DateTime  @default(now())
+  paymentNumber   String?   @unique
+  customer        Customer? @relation(fields: [customerId], references: [id])
+  order           Order?    @relation(fields: [orderId], references: [id])
+}
+
+model StockMovement {
+  id          String   @id @default(uuid())
+  productId   String
+  type        String
+  quantity    Float
+  referenceNo String?
+  remark      String?
+  createdAt   DateTime @default(now())
+  product     Product  @relation(fields: [productId], references: [id])
+}
+
+model Supplier {
+  id           String     @id @default(uuid())
+  supplierCode String     @unique
+  name         String
+  mobile       String
+  address      String?
+  gstNumber    String?
+  active       Boolean    @default(true)
+  createdAt    DateTime   @default(now())
+  purchases    Purchase[]
+}
+
+model CustomerAddress {
+  id String @id @default(cuid())
+
+  customerId    String
+  customer      Customer @relation(fields: [customerId], references: [id])
+  label         String
+  contactPerson String?
+  mobile        String?
+
+  addressLine1 String
+  addressLine2 String?
+
+  landmark String?
+  city     String?
+  state    String?
+  pincode  String?
+
+  isDefault Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  orders Order[] @relation("OrderDeliveryAddress")
+}
+
+model AdminFace {
+  id           String   @id @default(uuid())
+  userId       String
+  faceName     String
+  faceEncoding Json
+  createdAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model Gift {
+  id             String   @id @default(uuid())
+  name           String
+  description    String?
+  imageUrl        String?
+  pointsRequired Int
+  stock          Int      @default(0)
+  active         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  redemptions Redemption[]
+}
+
+model Redemption {
+  id             String   @id @default(uuid())
+  redemptionNo   String   @unique
+  customerId     String
+  giftId         String
+  pointsUsed     Int
+  status         String   @default("PENDING")
+  requestNote    String?
+  adminNote      String?
+  givenAt        DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  customer Customer @relation(fields: [customerId], references: [id])
+  gift     Gift     @relation(fields: [giftId], references: [id])
+}
+
+model RewardSetting {
+  id               String   @id @default(uuid())
+  redemptionOpen   Boolean  @default(true)
+  message          String?
+  updatedAt        DateTime @updatedAt
+}
+
+model RewardPointLedger {
+  id            String   @id @default(uuid())
+  customerId    String
+  orderId       String?
+  invoiceId     String?
+  points        Int
+  type          String   // EARNED, REDEEMED
+  status        String   @default("PENDING") // PENDING, CREDITED, USED
+  availableDate DateTime
+  note          String?
+  createdAt     DateTime @default(now())
+
+  customer Customer @relation(fields: [customerId], references: [id])
+}
+model OfferBanner {
+  id          String   @id @default(uuid())
+  title       String
+  subtitle    String?
+  description String?
+
+  imageUrl    String?
+
+  buttonText  String?
+  buttonLink  String?
+
+  backgroundColor String? @default("#2563eb")
+
+  priority    Int      @default(1)
+
+  isActive    Boolean  @default(true)
+
+  startDate   DateTime?
+  endDate     DateTime?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+model CustomerOtp {
+  id        String   @id @default(uuid())
+  mobile    String
+  otp       String
+  expiresAt DateTime
+  verified  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([mobile])
+}
+
+model OwnerMessage {
+  id           String   @id @default(uuid())
+
+  name         String
+  designation  String
+  message      String   @db.Text
+  imageUrl     String
+
+  coOwnerName        String?
+  coOwnerDesignation String?
+  coOwnerMessage     String? @db.Text
+  coOwnerImageUrl    String?
+
+  displayOrder Int      @default(1)
+  isActive     Boolean  @default(true)
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model WebsiteGallery {
+  id           String   @id @default(uuid())
+
+  title        String?
+  description  String?  @db.Text
+  imageUrl     String
+  displayOrder Int      @default(1)
+  isActive     Boolean  @default(true)
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+enum UserRole {
+  ADMIN
+  STAFF
+  CUSTOMER
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum LabourType {
+  NONE
+  LOADING
+  UNLOADING
+  BOTH
+}
