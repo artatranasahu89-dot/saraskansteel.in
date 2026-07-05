@@ -42,7 +42,7 @@ function AdminGallery() {
   const loadGallery = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/website-gallery/admin",
+        "https://saraskansteel-in.onrender.com/api/website-gallery/admin",
         { headers }
       );
 
@@ -65,7 +65,7 @@ function AdminGallery() {
       formData.append("image", file);
 
       const res = await axios.post(
-        "http://localhost:5000/api/upload/gallery-image",
+        "https://saraskansteel-in.onrender.com/api/upload/gallery-image",
         formData,
         {
           headers: {
@@ -112,14 +112,14 @@ function AdminGallery() {
 
       if (editingId) {
         await axios.put(
-          `http://localhost:5000/api/website-gallery/${editingId}`,
+          `https://saraskansteel-in.onrender.com/api/website-gallery/${editingId}`,
           form,
           { headers }
         );
 
         alert("Gallery image updated successfully");
       } else {
-        await axios.post("http://localhost:5000/api/website-gallery", form, {
+        await axios.post("https://saraskansteel-in.onrender.com/api/website-gallery", form, {
           headers,
         });
 
@@ -161,7 +161,7 @@ function AdminGallery() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/website-gallery/${id}`, {
+      await axios.delete(`https://saraskansteel-in.onrender.com/api/website-gallery/${id}`, {
         headers,
       });
 

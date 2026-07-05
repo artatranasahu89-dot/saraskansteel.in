@@ -119,16 +119,16 @@ function CustomerPoints() {
 
       const [summaryRes, settingRes, giftsRes, myRedemptionsRes] =
         await Promise.allSettled([
-          axios.get("http://localhost:5000/api/customer-portal/summary", {
+          axios.get("https://saraskansteel-in.onrender.com/api/customer-portal/summary", {
             headers,
           }),
-          axios.get("http://localhost:5000/api/rewards/setting", {
+          axios.get("https://saraskansteel-in.onrender.com/api/rewards/setting", {
             headers,
           }),
-          axios.get("http://localhost:5000/api/rewards/gifts", {
+          axios.get("https://saraskansteel-in.onrender.com/api/rewards/gifts", {
             headers,
           }),
-          axios.get("http://localhost:5000/api/rewards/my-redemptions", {
+          axios.get("https://saraskansteel-in.onrender.com/api/rewards/my-redemptions", {
             headers,
           }),
         ]);
@@ -246,7 +246,7 @@ function CustomerPoints() {
       setClaimingId(gift.id);
 
       await axios.post(
-        "http://localhost:5000/api/rewards/redeem",
+        "https://saraskansteel-in.onrender.com/api/rewards/redeem",
         {
           customerId,
           giftId: gift.id,

@@ -155,7 +155,7 @@ function CustomerCheckout() {
 
       try {
         const summaryRes = await axios.get(
-          "http://localhost:5000/api/customer-portal/summary",
+          "https://saraskansteel-in.onrender.com/api/customer-portal/summary",
           { headers }
         );
 
@@ -166,7 +166,7 @@ function CustomerCheckout() {
 
       try {
         const addressRes = await axios.get(
-          "http://localhost:5000/api/customer-addresses",
+          "https://saraskansteel-in.onrender.com/api/customer-addresses",
           { headers }
         );
 
@@ -260,7 +260,7 @@ function CustomerCheckout() {
       }
 
       const res = await axios.post(
-        "http://localhost:5000/api/customer-addresses",
+        "https://saraskansteel-in.onrender.com/api/customer-addresses",
         {
           ...addressForm,
           mobile: onlyDigits(addressForm.mobile),
@@ -366,10 +366,10 @@ customerMobile: customerData.mobile || user.mobile || "",
       };
 
       const endpoints = [
-        "http://localhost:5000/api/customer-portal/place-order",
-        "http://localhost:5000/api/customer-portal/orders",
-        "http://localhost:5000/api/orders/customer",
-        "http://localhost:5000/api/orders",
+        "https://saraskansteel-in.onrender.com/api/customer-portal/place-order",
+        "https://saraskansteel-in.onrender.com/api/customer-portal/orders",
+        "https://saraskansteel-in.onrender.com/api/orders/customer",
+        "https://saraskansteel-in.onrender.com/api/orders",
       ];
 
       let successResponse: any = null;

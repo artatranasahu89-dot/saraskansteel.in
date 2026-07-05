@@ -13,7 +13,7 @@ router.post("/product-image", upload.single("image"), (req, res) => {
 
   return res.json({
     success: true,
-    imageUrl: `http://localhost:5000/uploads/products/${req.file.filename}`,
+    imageUrl: `https://saraskansteel-in.onrender.com/uploads/products/${req.file.filename}`,
   });
 });
 
@@ -27,7 +27,7 @@ router.post("/offer-image", upload.single("image"), (req, res) => {
 
   return res.json({
     success: true,
-    imageUrl: `http://localhost:5000/uploads/offers/${req.file.filename}`,
+    imageUrl: `https://saraskansteel-in.onrender.com/uploads/offers/${req.file.filename}`,
   });
 });
 
@@ -41,7 +41,7 @@ router.post("/profile-image", upload.single("image"), (req, res) => {
 
   return res.json({
     success: true,
-    imageUrl: `http://localhost:5000/uploads/profiles/${req.file.filename}`,
+    imageUrl: `https://saraskansteel-in.onrender.com/uploads/profiles/${req.file.filename}`,
   });
 });
 
@@ -55,7 +55,7 @@ router.post("/gallery-image", upload.single("image"), (req, res) => {
 
   return res.json({
     success: true,
-    imageUrl: `http://localhost:5000/uploads/gallery/${req.file.filename}`,
+    imageUrl: `https://saraskansteel-in.onrender.com/uploads/gallery/${req.file.filename}`,
   });
 });
 

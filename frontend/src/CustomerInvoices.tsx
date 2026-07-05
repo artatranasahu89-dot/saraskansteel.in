@@ -39,7 +39,7 @@ function CustomerInvoices() {
       setLoading(true);
 
       const res = await axios.get(
-        "http://localhost:5000/api/customer-portal/my-invoices",
+        "https://saraskansteel-in.onrender.com/api/customer-portal/my-invoices",
         { headers }
       );
 

@@ -38,21 +38,21 @@ function Reports() {
       outstandingRes,
       lowStockRes,
     ] = await Promise.all([
-      axios.get("http://localhost:5000/api/reports/summary?" + q, { headers }),
-      axios.get("http://localhost:5000/api/reports/product-wise?" + q, {
+      axios.get("https://saraskansteel-in.onrender.com/api/reports/summary?" + q, { headers }),
+      axios.get("https://saraskansteel-in.onrender.com/api/reports/product-wise?" + q, {
         headers,
       }),
-      axios.get("http://localhost:5000/api/reports/staff-wise?" + q, {
+      axios.get("https://saraskansteel-in.onrender.com/api/reports/staff-wise?" + q, {
         headers,
       }),
-      axios.get("http://localhost:5000/api/reports/transport-wise?" + q, {
+      axios.get("https://saraskansteel-in.onrender.com/api/reports/transport-wise?" + q, {
         headers,
       }),
-      axios.get("http://localhost:5000/api/reports/payment-mode?" + q, {
+      axios.get("https://saraskansteel-in.onrender.com/api/reports/payment-mode?" + q, {
         headers,
       }),
-      axios.get("http://localhost:5000/api/reports/outstanding", { headers }),
-      axios.get("http://localhost:5000/api/reports/low-stock", { headers }),
+      axios.get("https://saraskansteel-in.onrender.com/api/reports/outstanding", { headers }),
+      axios.get("https://saraskansteel-in.onrender.com/api/reports/low-stock", { headers }),
     ]);
 
     setSummary(summaryRes.data.data);

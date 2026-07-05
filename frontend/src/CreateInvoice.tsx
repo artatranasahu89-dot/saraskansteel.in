@@ -26,7 +26,7 @@ function CreateInvoice() {
   const money = (value: any) => Number(value || 0).toFixed(2);
 
   const loadOrder = async () => {
-    const res = await axios.get("http://localhost:5000/api/orders", {
+    const res = await axios.get("https://saraskansteel-in.onrender.com/api/orders", {
       headers,
     });
 
@@ -89,7 +89,7 @@ function CreateInvoice() {
 
     try {
       await axios.post(
-        `http://localhost:5000/api/invoices/create/${orderId}`,
+        `https://saraskansteel-in.onrender.com/api/invoices/create/${orderId}`,
         {
           labourCharge: labour,
           transportCharge: transport,
@@ -111,7 +111,7 @@ function CreateInvoice() {
 
       if (paidNow > 0) {
         await axios.post(
-          "http://localhost:5000/api/payments",
+          "https://saraskansteel-in.onrender.com/api/payments",
           {
             orderId,
             customerId: order.customerRecord?.id,

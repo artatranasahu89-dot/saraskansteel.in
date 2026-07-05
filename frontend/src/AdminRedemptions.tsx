@@ -16,7 +16,7 @@ function AdminRedemptions() {
       setLoading(true);
 
       const res = await axios.get(
-        "http://localhost:5000/api/rewards/redemptions",
+        "https://saraskansteel-in.onrender.com/api/rewards/redemptions",
         { headers }
       );
 
@@ -36,7 +36,7 @@ function AdminRedemptions() {
   const approve = async (id: string) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/rewards/${id}/approve`,
+        `https://saraskansteel-in.onrender.com/api/rewards/${id}/approve`,
         {},
         { headers }
       );
@@ -53,7 +53,7 @@ function AdminRedemptions() {
 
     try {
       await axios.patch(
-        `http://localhost:5000/api/rewards/${id}/reject`,
+        `https://saraskansteel-in.onrender.com/api/rewards/${id}/reject`,
         {
           adminNote: reason,
         },
@@ -70,7 +70,7 @@ function AdminRedemptions() {
   const markGiven = async (id: string) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/rewards/${id}/given`,
+        `https://saraskansteel-in.onrender.com/api/rewards/${id}/given`,
         {},
         { headers }
       );

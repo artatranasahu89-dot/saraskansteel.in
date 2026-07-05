@@ -12,7 +12,7 @@ type GalleryItem = {
 
 function About() {
   const navigate = useNavigate();
-  const API = "http://localhost:5000";
+  const API = "https://saraskansteel-in.onrender.com";
 
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   const isCustomer = user?.role === "CUSTOMER";

@@ -50,11 +50,11 @@ function CreateOrder() {
   const money = (v: any) => Number(v || 0).toFixed(2);
 
   const loadData = async () => {
-    const customerRes = await axios.get("http://localhost:5000/api/customers", {
+    const customerRes = await axios.get("https://saraskansteel-in.onrender.com/api/customers", {
       headers,
     });
 
-    const productRes = await axios.get("http://localhost:5000/api/products", {
+    const productRes = await axios.get("https://saraskansteel-in.onrender.com/api/products", {
       headers,
     });
 
@@ -73,7 +73,7 @@ function CreateOrder() {
 
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/customer-addresses/customer/${customerId}`,
+        `https://saraskansteel-in.onrender.com/api/customer-addresses/customer/${customerId}`,
         { headers }
       );
 
@@ -249,7 +249,7 @@ function CreateOrder() {
     }
 
     const res = await axios.post(
-      "http://localhost:5000/api/customers",
+      "https://saraskansteel-in.onrender.com/api/customers",
       newCustomer,
       { headers }
     );
@@ -276,7 +276,7 @@ function CreateOrder() {
     }
 
     const res = await axios.post(
-      "http://localhost:5000/api/customer-addresses",
+      "https://saraskansteel-in.onrender.com/api/customer-addresses",
       {
         ...addressForm,
         customerId: selectedCustomerId,
@@ -326,7 +326,7 @@ function CreateOrder() {
       setLoading(true);
 
       await axios.post(
-        "http://localhost:5000/api/orders",
+        "https://saraskansteel-in.onrender.com/api/orders",
         {
           customerId: selectedCustomerId,
           customerRecordId: selectedCustomerId,

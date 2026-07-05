@@ -28,7 +28,7 @@ function CollectPayment() {
 
   const loadOrder = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/order-data", {
+      const res = await axios.get("https://saraskansteel-in.onrender.com/api/order-data", {
         headers,
       });
 
@@ -72,7 +72,7 @@ function CollectPayment() {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/payments",
+        "https://saraskansteel-in.onrender.com/api/payments",
         {
           orderId: order.id,
           customerId: order.customerRecord?.id,
@@ -106,7 +106,7 @@ function CollectPayment() {
       }
 
       await axios.patch(
-        `http://localhost:5000/api/delivery/${order.id}/pay-later`,
+        `https://saraskansteel-in.onrender.com/api/delivery/${order.id}/pay-later`,
         {
           collectionRemark: payLaterRemark || "Customer will pay later",
         },

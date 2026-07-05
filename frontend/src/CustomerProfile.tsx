@@ -74,7 +74,7 @@ function CustomerProfile() {
       setLoading(true);
 
       const summaryRes = await axios.get(
-        "http://localhost:5000/api/customer-portal/summary",
+        "https://saraskansteel-in.onrender.com/api/customer-portal/summary",
         { headers }
       );
 
@@ -82,7 +82,7 @@ function CustomerProfile() {
 
       try {
         const addressRes = await axios.get(
-          "http://localhost:5000/api/customer-addresses",
+          "https://saraskansteel-in.onrender.com/api/customer-addresses",
           { headers }
         );
 
@@ -134,7 +134,7 @@ function CustomerProfile() {
       }
 
       await axios.post(
-        "http://localhost:5000/api/customer-addresses",
+        "https://saraskansteel-in.onrender.com/api/customer-addresses",
         {
           ...addressForm,
           mobile: onlyDigits(addressForm.mobile),
@@ -161,7 +161,7 @@ function CustomerProfile() {
   const setDefaultAddress = async (id: string) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/customer-addresses/${id}/default`,
+        `https://saraskansteel-in.onrender.com/api/customer-addresses/${id}/default`,
         {},
         { headers }
       );
@@ -180,7 +180,7 @@ function CustomerProfile() {
     try {
       if (!confirm("Delete this address?")) return;
 
-      await axios.delete(`http://localhost:5000/api/customer-addresses/${id}`, {
+      await axios.delete(`https://saraskansteel-in.onrender.com/api/customer-addresses/${id}`, {
         headers,
       });
 
@@ -212,7 +212,7 @@ function CustomerProfile() {
       }
 
       await axios.post(
-        "http://localhost:5000/api/customer-auth/change-password",
+        "https://saraskansteel-in.onrender.com/api/customer-auth/change-password",
         {
           currentPassword: passwordForm.currentPassword,
           newPassword: passwordForm.newPassword,

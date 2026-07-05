@@ -41,7 +41,7 @@ function PaymentHistory() {
     });
 
     const res = await axios.get(
-      "http://localhost:5000/api/payments?" + query.toString(),
+      "https://saraskansteel-in.onrender.com/api/payments?" + query.toString(),
       { headers }
     );
 

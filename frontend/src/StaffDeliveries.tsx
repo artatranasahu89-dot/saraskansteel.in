@@ -15,7 +15,7 @@ const [watchId, setWatchId] = useState<number | null>(null);
   const money = (value: any) => Number(value || 0).toFixed(2);
 
   const loadOrders = async () => {
-    const res = await axios.get("http://localhost:5000/api/delivery", {
+    const res = await axios.get("https://saraskansteel-in.onrender.com/api/delivery", {
       headers,
     });
     setOrders(res.data.data || []);
@@ -57,7 +57,7 @@ const [watchId, setWatchId] = useState<number | null>(null);
       };
 
       await axios.patch(
-        `http://localhost:5000/api/delivery/${orderId}/location`,
+        `https://saraskansteel-in.onrender.com/api/delivery/${orderId}/location`,
         gps,
         { headers }
       );
@@ -90,7 +90,7 @@ const stopAutoGPS = () => {
       const gps = await getGPS();
 
       await axios.patch(
-        `http://localhost:5000/api/delivery/${orderId}/${action}`,
+        `https://saraskansteel-in.onrender.com/api/delivery/${orderId}/${action}`,
         {
           ...gps,
           deliveryNote: note,
@@ -112,7 +112,7 @@ const stopAutoGPS = () => {
     if (!remark) return;
 
     await axios.patch(
-      `http://localhost:5000/api/delivery/${orderId}/pay-later`,
+      `https://saraskansteel-in.onrender.com/api/delivery/${orderId}/pay-later`,
       { collectionRemark: remark },
       { headers }
     );

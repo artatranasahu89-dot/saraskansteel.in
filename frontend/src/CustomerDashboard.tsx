@@ -40,12 +40,12 @@ function CustomerDashboard() {
       setLoading(true);
 
       const summaryRes = await axios.get(
-        "http://localhost:5000/api/customer-portal/summary",
+        "https://saraskansteel-in.onrender.com/api/customer-portal/summary",
         { headers }
       );
 
       const orderRes = await axios.get(
-        "http://localhost:5000/api/customer-portal/my-orders",
+        "https://saraskansteel-in.onrender.com/api/customer-portal/my-orders",
         { headers }
       );
 

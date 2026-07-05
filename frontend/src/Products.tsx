@@ -28,11 +28,11 @@ function Products() {
   const money = (value: any) => Number(value || 0).toFixed(2);
 
   const loadData = async () => {
-    const productRes = await axios.get("http://localhost:5000/api/products", {
+    const productRes = await axios.get("https://saraskansteel-in.onrender.com/api/products", {
       headers,
     });
 
-    const categoryRes = await axios.get("http://localhost:5000/api/categories", {
+    const categoryRes = await axios.get("https://saraskansteel-in.onrender.com/api/categories", {
       headers,
     });
 
@@ -64,7 +64,7 @@ function Products() {
     formData.append("image", file);
 
     const res = await axios.post(
-      "http://localhost:5000/api/upload/product-image",
+      "https://saraskansteel-in.onrender.com/api/upload/product-image",
       formData,
       {
         headers: {
@@ -105,13 +105,13 @@ function Products() {
     };
 
     if (editingId) {
-      await axios.put(`http://localhost:5000/api/products/${editingId}`, payload, {
+      await axios.put(`https://saraskansteel-in.onrender.com/api/products/${editingId}`, payload, {
         headers,
       });
 
       alert("Product updated");
     } else {
-      await axios.post("http://localhost:5000/api/products", payload, {
+      await axios.post("https://saraskansteel-in.onrender.com/api/products", payload, {
         headers,
       });
 
@@ -144,7 +144,7 @@ function Products() {
   const deleteProduct = async (id: string) => {
     if (!confirm("Delete this product?")) return;
 
-    await axios.delete(`http://localhost:5000/api/products/${id}`, {
+    await axios.delete(`https://saraskansteel-in.onrender.com/api/products/${id}`, {
       headers,
     });
 

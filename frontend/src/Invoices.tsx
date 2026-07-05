@@ -13,7 +13,7 @@ function Invoices() {
   const money = (value: any) => Number(value || 0).toFixed(2);
 
   const loadInvoices = async () => {
-    const res = await axios.get("http://localhost:5000/api/invoices", {
+    const res = await axios.get("https://saraskansteel-in.onrender.com/api/invoices", {
       headers,
     });
 
@@ -365,7 +365,7 @@ function Invoices() {
     const token = localStorage.getItem("token");
 
     const response = await axios.get(
-      `http://localhost:5000/api/pdf/invoice/${i.id}`,
+      `https://saraskansteel-in.onrender.com/api/pdf/invoice/${i.id}`,
       {
         responseType: "blob",
         headers: {

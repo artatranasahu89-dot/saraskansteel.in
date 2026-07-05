@@ -14,7 +14,7 @@ function TransportPaymentReport() {
   const money = (v: any) => Number(v || 0).toFixed(2);
 
   const loadData = async () => {
-    const res = await axios.get("http://localhost:5000/api/order-data", {
+    const res = await axios.get("https://saraskansteel-in.onrender.com/api/order-data", {
       headers,
     });
 

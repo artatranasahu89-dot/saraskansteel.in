@@ -15,7 +15,7 @@ function AdminCollectionReport() {
   const money = (v: any) => Number(v || 0).toFixed(2);
 
   const loadData = async () => {
-    const res = await axios.get("http://localhost:5000/api/payments", {
+    const res = await axios.get("https://saraskansteel-in.onrender.com/api/payments", {
       headers,
     });
 

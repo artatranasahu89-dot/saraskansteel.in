@@ -123,7 +123,7 @@ function CustomerOrders() {
       setLoading(true);
 
       const res = await axios.get(
-        "http://localhost:5000/api/customer-portal/my-orders",
+        "https://saraskansteel-in.onrender.com/api/customer-portal/my-orders",
         { headers }
       );
 

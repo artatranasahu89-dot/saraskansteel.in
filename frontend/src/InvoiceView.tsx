@@ -45,8 +45,8 @@ function InvoiceView() {
       setLoading(true);
 
       const endpoints = [
-        `http://localhost:5000/api/invoices/${id}`,
-        `http://localhost:5000/api/customer-portal/invoices/${id}`,
+        `https://saraskansteel-in.onrender.com/api/invoices/${id}`,
+        `https://saraskansteel-in.onrender.com/api/customer-portal/invoices/${id}`,
       ];
 
       let loadedInvoice: any = null;
@@ -64,7 +64,7 @@ function InvoiceView() {
 
       if (!loadedInvoice && user?.role === "CUSTOMER") {
         const listRes = await axios.get(
-          "http://localhost:5000/api/customer-portal/my-invoices",
+          "https://saraskansteel-in.onrender.com/api/customer-portal/my-invoices",
           { headers }
         );
 

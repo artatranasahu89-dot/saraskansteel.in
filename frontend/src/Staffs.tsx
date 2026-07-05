@@ -18,7 +18,7 @@ function Staffs() {
   const headers = { Authorization: "Bearer " + token };
 
   const loadRecords = async () => {
-    const res = await axios.get("http://localhost:5000/api/staff", {
+    const res = await axios.get("https://saraskansteel-in.onrender.com/api/staff", {
       headers,
     });
     setRecords(res.data.data);
@@ -35,7 +35,7 @@ function Staffs() {
       return;
     }
 
-    await axios.post("http://localhost:5000/api/staff", form, {
+    await axios.post("https://saraskansteel-in.onrender.com/api/staff", form, {
       headers,
     });
 
@@ -54,7 +54,7 @@ function Staffs() {
 
   const changeStatus = async (id: string, active: boolean) => {
     await axios.patch(
-      `http://localhost:5000/api/staff/${id}/status`,
+      `https://saraskansteel-in.onrender.com/api/staff/${id}/status`,
       { active },
       { headers }
     );
@@ -65,7 +65,7 @@ function Staffs() {
   const deleteRecord = async (id: string) => {
     if (!confirm("Are you sure?")) return;
 
-    await axios.delete(`http://localhost:5000/api/staff/${id}`, {
+    await axios.delete(`https://saraskansteel-in.onrender.com/api/staff/${id}`, {
       headers,
     });
 

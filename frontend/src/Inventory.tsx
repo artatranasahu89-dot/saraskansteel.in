@@ -18,12 +18,12 @@ function Inventory() {
   const money = (value: any) => Number(value || 0).toFixed(2);
 
   const loadData = async () => {
-    const productRes = await axios.get("http://localhost:5000/api/products", {
+    const productRes = await axios.get("https://saraskansteel-in.onrender.com/api/products", {
       headers,
     });
 
     const movementRes = await axios.get(
-      "http://localhost:5000/api/inventory/movements",
+      "https://saraskansteel-in.onrender.com/api/inventory/movements",
       { headers }
     );
 
@@ -44,8 +44,8 @@ function Inventory() {
 
     const endpoint =
       movementType === "IN"
-        ? "http://localhost:5000/api/inventory/stock-in"
-        : "http://localhost:5000/api/inventory/stock-out";
+        ? "https://saraskansteel-in.onrender.com/api/inventory/stock-in"
+        : "https://saraskansteel-in.onrender.com/api/inventory/stock-out";
 
     try {
       await axios.post(

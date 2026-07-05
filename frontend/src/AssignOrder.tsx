@@ -14,11 +14,11 @@ function AssignOrder() {
   const money = (v: any) => Number(v || 0).toFixed(2);
 
   const loadData = async () => {
-    const orderRes = await axios.get("http://localhost:5000/api/order-data", {
+    const orderRes = await axios.get("https://saraskansteel-in.onrender.com/api/order-data", {
       headers,
     });
 
-    const staffRes = await axios.get("http://localhost:5000/api/staff", {
+    const staffRes = await axios.get("https://saraskansteel-in.onrender.com/api/staff", {
       headers,
     });
 
@@ -42,7 +42,7 @@ function AssignOrder() {
   const acceptOrder = async (orderId: string) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/order-data/${orderId}/accept`,
+        `https://saraskansteel-in.onrender.com/api/order-data/${orderId}/accept`,
         {},
         { headers }
       );
@@ -59,7 +59,7 @@ function AssignOrder() {
       if (!staffId) return;
 
       await axios.patch(
-        `http://localhost:5000/api/order-data/${orderId}/assign-staff`,
+        `https://saraskansteel-in.onrender.com/api/order-data/${orderId}/assign-staff`,
         { staffId },
         { headers }
       );
@@ -76,7 +76,7 @@ function AssignOrder() {
       if (!transportId) return;
 
       await axios.patch(
-        `http://localhost:5000/api/order-data/${orderId}/assign-transport`,
+        `https://saraskansteel-in.onrender.com/api/order-data/${orderId}/assign-transport`,
         { transportId },
         { headers }
       );
@@ -93,7 +93,7 @@ function AssignOrder() {
       if (!confirm("Cancel this order?")) return;
 
       await axios.patch(
-        `http://localhost:5000/api/order-data/${orderId}/cancel`,
+        `https://saraskansteel-in.onrender.com/api/order-data/${orderId}/cancel`,
         {},
         { headers }
       );

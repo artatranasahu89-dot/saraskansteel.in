@@ -7,7 +7,7 @@ type LoginRole = "ADMIN" | "STAFF" | "CUSTOMER";
 
 function Login() {
   const navigate = useNavigate();
-  const API = "http://localhost:5000";
+  const API = "https://saraskansteel-in.onrender.com";
 
   const [screen, setScreen] = useState<ScreenMode>("LOGIN");
 

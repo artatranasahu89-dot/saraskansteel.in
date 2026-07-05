@@ -36,13 +36,13 @@ function PayBill() {
     try {
       if (searchType === "MOBILE") {
         const res = await axios.get(
-          "http://localhost:5000/api/customers/mobile/" + searchValue,
+          "https://saraskansteel-in.onrender.com/api/customers/mobile/" + searchValue,
           { headers }
         );
 
         setCustomer(res.data.data);
       } else {
-        const res = await axios.get("http://localhost:5000/api/customers", {
+        const res = await axios.get("https://saraskansteel-in.onrender.com/api/customers", {
           headers,
         });
 
@@ -96,7 +96,7 @@ function PayBill() {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/payments",
+        "https://saraskansteel-in.onrender.com/api/payments",
         {
           customerId: customer.id,
           amount: paid,
@@ -125,7 +125,7 @@ const searchCustomerByValue = async (value: string, type: string) => {
   try {
     if (type === "MOBILE") {
       const res = await axios.get(
-        "http://localhost:5000/api/customers/mobile/" + value,
+        "https://saraskansteel-in.onrender.com/api/customers/mobile/" + value,
         { headers }
       );
 

@@ -20,15 +20,15 @@ function Purchases() {
   const money = (value: any) => Number(value || 0).toFixed(2);
 
   const loadData = async () => {
-    const supplierRes = await axios.get("http://localhost:5000/api/suppliers", {
+    const supplierRes = await axios.get("https://saraskansteel-in.onrender.com/api/suppliers", {
       headers,
     });
 
-    const productRes = await axios.get("http://localhost:5000/api/products", {
+    const productRes = await axios.get("https://saraskansteel-in.onrender.com/api/products", {
       headers,
     });
 
-    const purchaseRes = await axios.get("http://localhost:5000/api/purchases", {
+    const purchaseRes = await axios.get("https://saraskansteel-in.onrender.com/api/purchases", {
       headers,
     });
 
@@ -93,7 +93,7 @@ function Purchases() {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/purchases",
+        "https://saraskansteel-in.onrender.com/api/purchases",
         { supplierId, items, note },
         { headers }
       );

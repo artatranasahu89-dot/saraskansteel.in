@@ -13,7 +13,7 @@ function StaffDashboard() {
   const today = new Date().toLocaleDateString();
 
   const loadData = async () => {
-    const orderRes = await axios.get("http://localhost:5000/api/order-data", {
+    const orderRes = await axios.get("https://saraskansteel-in.onrender.com/api/order-data", {
       headers,
     });
 

@@ -19,11 +19,11 @@ function Categories() {
   const headers = { Authorization: "Bearer " + token };
 
   const loadData = async () => {
-    const categoryRes = await axios.get("http://localhost:5000/api/categories", {
+    const categoryRes = await axios.get("https://saraskansteel-in.onrender.com/api/categories", {
       headers,
     });
 
-    const productRes = await axios.get("http://localhost:5000/api/products", {
+    const productRes = await axios.get("https://saraskansteel-in.onrender.com/api/products", {
       headers,
     });
 
@@ -48,7 +48,7 @@ function Categories() {
 
     if (editingId) {
       await axios.put(
-        `http://localhost:5000/api/categories/${editingId}`,
+        `https://saraskansteel-in.onrender.com/api/categories/${editingId}`,
         {
           categoryNumber: Number(form.categoryNumber),
           name: form.name,
@@ -60,7 +60,7 @@ function Categories() {
       alert("Category updated");
     } else {
       await axios.post(
-        "http://localhost:5000/api/categories",
+        "https://saraskansteel-in.onrender.com/api/categories",
         {
           categoryNumber: Number(form.categoryNumber),
           name: form.name,
@@ -97,7 +97,7 @@ function Categories() {
 
     if (!confirm("Delete this category?")) return;
 
-    await axios.delete(`http://localhost:5000/api/categories/${id}`, {
+    await axios.delete(`https://saraskansteel-in.onrender.com/api/categories/${id}`, {
       headers,
     });
 

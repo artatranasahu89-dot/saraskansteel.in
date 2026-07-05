@@ -22,7 +22,7 @@ function AdminFaceManagement() {
   };
 
   const loadFaces = async () => {
-    const res = await axios.get("http://localhost:5000/api/auth/admin-faces", {
+    const res = await axios.get("https://saraskansteel-in.onrender.com/api/auth/admin-faces", {
       headers,
     });
     setFaces(res.data.data || []);
@@ -72,7 +72,7 @@ function AdminFaceManagement() {
     const faceEncoding = Array.from(detection.descriptor);
 
     await axios.post(
-      "http://localhost:5000/api/auth/admin-face-register",
+      "https://saraskansteel-in.onrender.com/api/auth/admin-face-register",
       {
         faceName: faceName || `Face ${faces.length + 1}`,
         faceEncoding,
@@ -88,7 +88,7 @@ function AdminFaceManagement() {
   const deleteFace = async (id: string) => {
     if (!confirm("Delete this face?")) return;
 
-    await axios.delete(`http://localhost:5000/api/auth/admin-face/${id}`, {
+    await axios.delete(`https://saraskansteel-in.onrender.com/api/auth/admin-face/${id}`, {
       headers,
     });
 

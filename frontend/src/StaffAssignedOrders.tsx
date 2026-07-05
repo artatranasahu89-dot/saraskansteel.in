@@ -13,7 +13,7 @@ function StaffAssignedOrders() {
   const money = (value: any) => Number(value || 0).toFixed(2);
 
   const loadOrders = async () => {
-    const res = await axios.get("http://localhost:5000/api/order-data", {
+    const res = await axios.get("https://saraskansteel-in.onrender.com/api/order-data", {
       headers,
     });
 
@@ -26,7 +26,7 @@ function StaffAssignedOrders() {
 
   const markProcessing = async (orderId: string) => {
     await axios.patch(
-      `http://localhost:5000/api/delivery/${orderId}/processing`,
+      `https://saraskansteel-in.onrender.com/api/delivery/${orderId}/processing`,
       { deliveryNote: "Staff started processing" },
       { headers }
     );

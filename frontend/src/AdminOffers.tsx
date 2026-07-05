@@ -29,7 +29,7 @@ function AdminOffers() {
     try {
       setLoading(true);
 
-      const res = await axios.get("http://localhost:5000/api/offers", {
+      const res = await axios.get("https://saraskansteel-in.onrender.com/api/offers", {
         headers,
       });
 
@@ -67,7 +67,7 @@ function AdminOffers() {
   formData.append("image", file);
 
   const res = await axios.post(
-    "http://localhost:5000/api/upload/offer-image",
+    "https://saraskansteel-in.onrender.com/api/upload/offer-image",
     formData,
     {
       headers: {
@@ -99,14 +99,14 @@ function AdminOffers() {
 
       if (editingId) {
         await axios.put(
-          `http://localhost:5000/api/offers/${editingId}`,
+          `https://saraskansteel-in.onrender.com/api/offers/${editingId}`,
           payload,
           { headers }
         );
 
         alert("Offer updated");
       } else {
-        await axios.post("http://localhost:5000/api/offers", payload, {
+        await axios.post("https://saraskansteel-in.onrender.com/api/offers", payload, {
           headers,
         });
 
@@ -144,7 +144,7 @@ function AdminOffers() {
     if (!confirm("Delete this offer?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/offers/${id}`, {
+      await axios.delete(`https://saraskansteel-in.onrender.com/api/offers/${id}`, {
         headers,
       });
 
@@ -158,7 +158,7 @@ function AdminOffers() {
   const toggleActive = async (offer: any) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/offers/${offer.id}`,
+        `https://saraskansteel-in.onrender.com/api/offers/${offer.id}`,
         {
           ...offer,
           isActive: !offer.isActive,

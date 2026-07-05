@@ -156,7 +156,7 @@ function CustomerShop() {
     try {
       setLoading(true);
 
-      const productRes = await axios.get("http://localhost:5000/api/products", {
+      const productRes = await axios.get("https://saraskansteel-in.onrender.com/api/products", {
         headers,
       });
 
@@ -167,7 +167,7 @@ function CustomerShop() {
       setProducts(productList);
 
       try {
-        const categoryRes = await axios.get("http://localhost:5000/api/categories", {
+        const categoryRes = await axios.get("https://saraskansteel-in.onrender.com/api/categories", {
           headers,
         });
 

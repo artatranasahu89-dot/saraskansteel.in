@@ -6,7 +6,7 @@ function OfferCarousel() {
   const [index, setIndex] = useState(0);
 
   const loadOffers = async () => {
-    const res = await axios.get("http://localhost:5000/api/offers/active");
+    const res = await axios.get("https://saraskansteel-in.onrender.com/api/offers/active");
     setOffers(res.data.data || []);
   };
 

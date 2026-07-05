@@ -38,7 +38,7 @@ function AdminOwnerMessage() {
   const loadOwnerMessage = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/website/owner-message"
+        "https://saraskansteel-in.onrender.com/api/website/owner-message"
       );
 
       if (res.data.data) {
@@ -71,7 +71,7 @@ function AdminOwnerMessage() {
       formData.append("image", file);
 
       const res = await axios.post(
-        "http://localhost:5000/api/upload/profile-image",
+        "https://saraskansteel-in.onrender.com/api/upload/profile-image",
         formData,
         {
           headers: {
@@ -150,7 +150,7 @@ function AdminOwnerMessage() {
       setLoading(true);
 
       await axios.put(
-        "http://localhost:5000/api/website/owner-message",
+        "https://saraskansteel-in.onrender.com/api/website/owner-message",
         form,
         { headers }
       );

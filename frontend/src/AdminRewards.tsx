@@ -21,7 +21,7 @@ function AdminRewards() {
   const token = localStorage.getItem("token");
   const headers = { Authorization: "Bearer " + token };
 const loadSetting = async () => {
-  const res = await axios.get("http://localhost:5000/api/rewards/setting", {
+  const res = await axios.get("https://saraskansteel-in.onrender.com/api/rewards/setting", {
     headers,
   });
 
@@ -29,7 +29,7 @@ const loadSetting = async () => {
 };
 
 const saveSetting = async () => {
-  await axios.put("http://localhost:5000/api/rewards/setting", setting, {
+  await axios.put("https://saraskansteel-in.onrender.com/api/rewards/setting", setting, {
     headers,
   });
 
@@ -41,7 +41,7 @@ useEffect(() => {
   loadSetting();
 }, []);
   const loadGifts = async () => {
-    const res = await axios.get("http://localhost:5000/api/rewards/gifts", {
+    const res = await axios.get("https://saraskansteel-in.onrender.com/api/rewards/gifts", {
       headers,
     });
 
@@ -72,7 +72,7 @@ useEffect(() => {
     formData.append("image", file);
 
     const res = await axios.post(
-      "http://localhost:5000/api/upload/product-image",
+      "https://saraskansteel-in.onrender.com/api/upload/product-image",
       formData,
       {
         headers: {
@@ -113,14 +113,14 @@ useEffect(() => {
 
       if (editingId) {
         await axios.put(
-          `http://localhost:5000/api/rewards/gifts/${editingId}`,
+          `https://saraskansteel-in.onrender.com/api/rewards/gifts/${editingId}`,
           payload,
           { headers }
         );
 
         alert("Gift updated");
       } else {
-        await axios.post("http://localhost:5000/api/rewards/gifts", payload, {
+        await axios.post("https://saraskansteel-in.onrender.com/api/rewards/gifts", payload, {
           headers,
         });
 

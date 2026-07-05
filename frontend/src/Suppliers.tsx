@@ -20,7 +20,7 @@ function Suppliers() {
   const headers = { Authorization: "Bearer " + token };
 
   const loadSuppliers = async () => {
-    const res = await axios.get("http://localhost:5000/api/suppliers", {
+    const res = await axios.get("https://saraskansteel-in.onrender.com/api/suppliers", {
       headers,
     });
 
@@ -46,14 +46,14 @@ function Suppliers() {
 
     if (editingId) {
       await axios.put(
-        `http://localhost:5000/api/suppliers/${editingId}`,
+        `https://saraskansteel-in.onrender.com/api/suppliers/${editingId}`,
         form,
         { headers }
       );
 
       alert("Supplier updated");
     } else {
-      await axios.post("http://localhost:5000/api/suppliers", form, {
+      await axios.post("https://saraskansteel-in.onrender.com/api/suppliers", form, {
         headers,
       });
 
@@ -80,7 +80,7 @@ function Suppliers() {
   const deleteSupplier = async (id: string) => {
     if (!confirm("Delete this supplier?")) return;
 
-    await axios.delete(`http://localhost:5000/api/suppliers/${id}`, {
+    await axios.delete(`https://saraskansteel-in.onrender.com/api/suppliers/${id}`, {
       headers,
     });
 

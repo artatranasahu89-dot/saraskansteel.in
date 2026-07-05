@@ -14,10 +14,10 @@ function AdminDashboard() {
   const money = (v: any) => Number(v || 0).toFixed(2);
 
   const loadData = async () => {
-    const orderRes = await axios.get("http://localhost:5000/api/order-data", { headers });
-    const productRes = await axios.get("http://localhost:5000/api/products", { headers });
-    const paymentRes = await axios.get("http://localhost:5000/api/payments", { headers });
-    const customerRes = await axios.get("http://localhost:5000/api/customers", { headers });
+    const orderRes = await axios.get("https://saraskansteel-in.onrender.com/api/order-data", { headers });
+    const productRes = await axios.get("https://saraskansteel-in.onrender.com/api/products", { headers });
+    const paymentRes = await axios.get("https://saraskansteel-in.onrender.com/api/payments", { headers });
+    const customerRes = await axios.get("https://saraskansteel-in.onrender.com/api/customers", { headers });
 
     setOrders(orderRes.data.data || []);
     setProducts(productRes.data.data || []);

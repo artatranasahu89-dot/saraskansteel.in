@@ -101,7 +101,7 @@ const getLedgerItems = (ledgerRow: any) => {
 };
   const loadCustomers = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/customers", {
+      const res = await axios.get("https://saraskansteel-in.onrender.com/api/customers", {
         headers,
       });
 
@@ -112,7 +112,7 @@ const getLedgerItems = (ledgerRow: any) => {
   };
 const loadOrders = async () => {
   try {
-    const res = await axios.get("http://localhost:5000/api/orders", {
+    const res = await axios.get("https://saraskansteel-in.onrender.com/api/orders", {
       headers,
     });
 
@@ -151,7 +151,7 @@ const loadOrders = async () => {
       setLoading(true);
 
       const res = await axios.get(
-        `http://localhost:5000/api/customer-ledger/${id}`,
+        `https://saraskansteel-in.onrender.com/api/customer-ledger/${id}`,
         { headers }
       );
 

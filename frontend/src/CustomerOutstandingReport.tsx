@@ -15,15 +15,15 @@ function CustomerOutstandingReport() {
   const money = (v: any) => Number(v || 0).toFixed(2);
 
   const loadData = async () => {
-    const customerRes = await axios.get("http://localhost:5000/api/customers", {
+    const customerRes = await axios.get("https://saraskansteel-in.onrender.com/api/customers", {
       headers,
     });
 
-    const paymentRes = await axios.get("http://localhost:5000/api/payments", {
+    const paymentRes = await axios.get("https://saraskansteel-in.onrender.com/api/payments", {
       headers,
     });
 
-    const orderRes = await axios.get("http://localhost:5000/api/order-data", {
+    const orderRes = await axios.get("https://saraskansteel-in.onrender.com/api/order-data", {
       headers,
     });
 

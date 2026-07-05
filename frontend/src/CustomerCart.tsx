@@ -133,7 +133,7 @@ function CustomerCart() {
       setLoading(true);
 
       try {
-        const res = await axios.get("http://localhost:5000/api/cart", {
+        const res = await axios.get("https://saraskansteel-in.onrender.com/api/cart", {
           headers,
         });
 
@@ -177,7 +177,7 @@ function CustomerCart() {
 
     try {
       await axios.put(
-        `http://localhost:5000/api/cart/${itemId}`,
+        `https://saraskansteel-in.onrender.com/api/cart/${itemId}`,
         {
           quantity: nextQty,
           qty: nextQty,
@@ -188,7 +188,7 @@ function CustomerCart() {
     } catch (error) {
       try {
         await axios.patch(
-          `http://localhost:5000/api/cart/${itemId}`,
+          `https://saraskansteel-in.onrender.com/api/cart/${itemId}`,
           {
             quantity: nextQty,
             qty: nextQty,
@@ -213,7 +213,7 @@ function CustomerCart() {
     saveLocalCart(updatedItems);
 
     try {
-      await axios.delete(`http://localhost:5000/api/cart/${itemId}`, {
+      await axios.delete(`https://saraskansteel-in.onrender.com/api/cart/${itemId}`, {
         headers,
       });
     } catch {
@@ -228,7 +228,7 @@ function CustomerCart() {
     saveLocalCart([]);
 
     try {
-      await axios.delete("http://localhost:5000/api/cart", { headers });
+      await axios.delete("https://saraskansteel-in.onrender.com/api/cart", { headers });
     } catch {
       console.log("Cart cleared locally");
     }

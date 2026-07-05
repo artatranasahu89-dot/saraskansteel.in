@@ -102,7 +102,7 @@ function Customers() {
 
   const loadCustomers = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/customers", {
+      const res = await axios.get("https://saraskansteel-in.onrender.com/api/customers", {
         headers,
       });
 
@@ -115,7 +115,7 @@ function Customers() {
 
   const loadOrders = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/orders", {
+      const res = await axios.get("https://saraskansteel-in.onrender.com/api/orders", {
         headers,
       });
 
@@ -143,7 +143,7 @@ function Customers() {
     }
 
     const res = await axios.post(
-      "http://localhost:5000/api/customers",
+      "https://saraskansteel-in.onrender.com/api/customers",
       {
         name: form.name,
         mobile: cleanMobile,
@@ -213,7 +213,7 @@ function Customers() {
     }
 
     await axios.put(
-      `http://localhost:5000/api/customers/${editingId}`,
+      `https://saraskansteel-in.onrender.com/api/customers/${editingId}`,
       buildCustomerPayload(),
       { headers }
     );

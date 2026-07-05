@@ -21,7 +21,7 @@ function DeliveryManagement() {
       setLoading(true);
 
       const res = await axios.get(
-        "http://localhost:5000/api/delivery",
+        "https://saraskansteel-in.onrender.com/api/delivery",
         {
           headers,
         }
@@ -103,7 +103,7 @@ function DeliveryManagement() {
   ) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/delivery/${id}/${action}`,
+        `https://saraskansteel-in.onrender.com/api/delivery/${id}/${action}`,
         {},
         { headers }
       );

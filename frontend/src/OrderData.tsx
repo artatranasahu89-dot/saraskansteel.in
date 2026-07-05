@@ -24,12 +24,12 @@ function OrderData() {
   const money = (v: any) => Number(v || 0).toFixed(2);
 
   const loadData = async () => {
-    const orderRes = await axios.get("http://localhost:5000/api/order-data", {
+    const orderRes = await axios.get("https://saraskansteel-in.onrender.com/api/order-data", {
       headers,
     });
     setOrders(orderRes.data.data || []);
 
-    const staffRes = await axios.get("http://localhost:5000/api/staff", {
+    const staffRes = await axios.get("https://saraskansteel-in.onrender.com/api/staff", {
       headers,
     });
     setStaffs(staffRes.data.data || []);
@@ -169,7 +169,7 @@ function OrderData() {
 };
 
   const markDelivered = async (id: string) => {
-    await axios.patch(`http://localhost:5000/api/order-data/${id}/delivered`, {}, { headers });
+    await axios.patch(`https://saraskansteel-in.onrender.com/api/order-data/${id}/delivered`, {}, { headers });
     alert("Marked delivered");
     loadData();
   };

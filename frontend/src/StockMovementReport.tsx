@@ -13,7 +13,7 @@ function StockMovementReport() {
   const headers = { Authorization: "Bearer " + token };
 
   const loadData = async () => {
-    const productRes = await axios.get("http://localhost:5000/api/products", {
+    const productRes = await axios.get("https://saraskansteel-in.onrender.com/api/products", {
       headers,
     });
 
@@ -22,7 +22,7 @@ function StockMovementReport() {
     if (type) params.append("type", type);
 
     const movementRes = await axios.get(
-      "http://localhost:5000/api/inventory/report?" + params.toString(),
+      "https://saraskansteel-in.onrender.com/api/inventory/report?" + params.toString(),
       { headers }
     );
 

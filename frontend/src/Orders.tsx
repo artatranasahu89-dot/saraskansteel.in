@@ -44,11 +44,11 @@ function OrderData() {
     });
 
     const res = await axios.get(
-      "http://localhost:5000/api/order-data?" + params.toString(),
+      "https://saraskansteel-in.onrender.com/api/order-data?" + params.toString(),
       { headers }
     );
 
-    const staffRes = await axios.get("http://localhost:5000/api/staff", {
+    const staffRes = await axios.get("https://saraskansteel-in.onrender.com/api/staff", {
       headers,
     });
 
@@ -62,7 +62,7 @@ function OrderData() {
 
   const markDelivered = async (orderId: string) => {
     await axios.patch(
-      `http://localhost:5000/api/order-data/${orderId}/delivered`,
+      `https://saraskansteel-in.onrender.com/api/order-data/${orderId}/delivered`,
       {},
       { headers }
     );
