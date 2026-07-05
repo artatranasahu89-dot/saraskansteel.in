@@ -7,7 +7,7 @@
     "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true
-    "supperssImplicitAnyIndexErrors":true,
+    "supperssImplicitAnyIndexErrors": true,
   },
   "include": ["src"]
 }
