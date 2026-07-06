@@ -94,11 +94,10 @@ createRoot(document.getElementById("root")!).render(
     </ProtectedRoute>
   }
 />
-<Route path="/customer-checkout"element={<CustomerCheckout/>}/>CustomerCheckout
-<Route path="/Contact"element={<Contact/>}/>Contact
-<Route path="/about"element={<About/>}/>About
-<Route path="/" element={<Navigate to="/home" replace />} />
-<Route path="/home"element={<Home />} />home
+<Route path="/customer-checkout" element={<CustomerCheckout />} />
+<Route path="/contact" element={<Contact />} />
+<Route path="/about" element={<About />} />
+<Route path="/home" element={<Home />} />
 <Route path="/login" element={<Login />} />
 <Route path="/orders" element={<Orders />} />
 <Route path="/invoices" element={<Invoices />} />
@@ -113,6 +112,8 @@ createRoot(document.getElementById("root")!).render(
 <Route path="/payment-history" element={<PaymentHistory />} />
 <Route path="/collect-payment/:orderId" element={<CollectPayment />} />
 <Route path="/pay-bill" element={<PayBill />} />
+<Route path="/view-invoice/:id" element={<InvoiceView />} />
+<Route path="/customer-invoice/:id" element={<InvoiceView />} />
 <Route
   path="/customer-ledger"
   element={

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import AdminLayout from "./AdminLayout";
 
+
 function CreateInvoice() {
   const { orderId } = useParams();
   const navigate = useNavigate();
@@ -300,7 +301,7 @@ function CreateInvoice() {
 
           <div className="customer-grid">
             <p><b>Order ID:</b> {order.orderNumber}</p>
-            <p><b>Date:</b> formatDate(order.createdAt)</p>
+            <p><b>Date:</b> {new Date(order.createdAt).toLocaleDateString("en-IN")}</p>
             <p><b>Status:</b> {order.status}</p>
             <p><b>Mobile:</b> {order.customerRecord?.mobile}</p>
             <p><b>Name:</b> {order.customerRecord?.name}</p>

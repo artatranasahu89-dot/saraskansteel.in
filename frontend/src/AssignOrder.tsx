@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import AdminLayout from "./AdminLayout";
+import { Link } from "react-router-dom";
 
 function AssignOrder() {
   const [orders, setOrders] = useState<any[]>([]);
@@ -466,21 +467,21 @@ const getCustomerId = (order: any) => {
                           )}
 
                           {canCreateInvoice && (
-                            <a
-                              className="btn blue"
-                              href={`/create-invoice/${o.id}`}
-                            >
-                              Create Invoice
-                            </a>
+                            <Link
+  className="btn blue"
+  to={`/create-invoice/${o.id}`}
+>
+  Create Invoice
+</Link>
                           )}
 
                           {invoiceReady && (
-                            <a
-                              className="btn"
-                              href={`/invoice-view/${o.invoice.id}`}
-                            >
-                              View Invoice
-                            </a>
+                            <Link
+  className="btn"
+  to={`/invoice-view/${o.invoice.id}`}
+>
+  View Invoice
+</Link>
                           )}
 
                           {!isCancelled && !isDelivered && (

@@ -5,6 +5,7 @@ import AdminLayout from "./AdminLayout";
 import CustomerLayout from "./CustomerLayout";
 import html2pdf from "html2pdf.js";
 
+
 function InvoiceView() {
   const { id } = useParams();
   const billRef = useRef<HTMLDivElement>(null);
