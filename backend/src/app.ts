@@ -31,7 +31,9 @@ import websiteRoutes from "./modules/website/website.routes";
 //import customerOtpRoutes from "./modules/customer/customer-otp.routes";
 import galleryRoutes from "./modules/website-gallery/gallery.routes";
 import websiteProductsRoutes from "./modules/website-products/websiteProducts.routes";
+import path from "path";
 
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 const app = express();
 
 app.use(cors());
